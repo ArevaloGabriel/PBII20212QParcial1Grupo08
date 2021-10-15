@@ -84,5 +84,27 @@ public class ClientesTest {
         this.lista.agregarCliente(new Cliente("Pedro","Jimenez",345678123,"Pepe 123"));
         Assert.assertNotNull(this.lista.obtenerClienteDadoDNI(33557055));
     }
+
+    @Test
+    public void queSeIntenteBloquearUnClienteQueSiExistaEnLaListaDeClientes(){
+        this.lista.agregarCliente(new Cliente("Cristian","Feldman",33557055,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Carmen","López",12345678,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Ana María","López",23456789,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Pedro","Jimenez",345678123,"Pepe 123"));
+        Boolean valorEsperado = true;
+        Boolean valorObtenido = this.lista.bloquearDesbloquearUsuario(33557055,true);
+        assertEquals(valorEsperado,valorObtenido);
+    }
+
+    @Test
+    public void queSeIntenteBloquearUnClienteQueNoExistaEnLaListaDeClientes(){
+        this.lista.agregarCliente(new Cliente("Cristian","Feldman",33557055,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Carmen","López",12345678,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Ana María","López",23456789,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Pedro","Jimenez",345678123,"Pepe 123"));
+        Boolean valorEsperado = false;
+        Boolean valorObtenido = this.lista.bloquearDesbloquearUsuario(33557054,true);
+        assertEquals(valorEsperado,valorObtenido);
+    }
 }
 

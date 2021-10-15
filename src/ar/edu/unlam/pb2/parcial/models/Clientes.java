@@ -65,4 +65,19 @@ public class Clientes {
 		}
 		return cli;
 	}
+
+	public Boolean bloquearDesbloquearUsuario (Integer dni, Boolean bloqueado){
+		Boolean est = false;
+		for (int i = 0; i < this.idx && !est; i++) {
+			if(dni.equals(this.vecClientes[i].getDni())){
+				est = true;
+				if (bloqueado) {
+					this.vecClientes[i].bloquearCliente();
+				} else {
+					this.vecClientes[i].desbloquearCliente();
+				}
+			}
+		}
+		return est;
+	}
 }
