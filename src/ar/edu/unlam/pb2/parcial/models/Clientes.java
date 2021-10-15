@@ -51,4 +51,18 @@ public class Clientes {
 		}
 		return est;
 	}
+
+	public Cliente obtenerClienteDadoDNI (Integer dni){
+		Cliente cli = null;
+		Boolean enc = false;
+		if(this.idx > 0){
+			for (int i = 0; i < this.idx && !enc; i++) {
+				if(dni.equals(this.vecClientes[i].getDni())){
+					enc = true;
+					cli = this.vecClientes[i];
+				}
+			}
+		}
+		return cli;
+	}
 }

@@ -66,5 +66,23 @@ public class ClientesTest {
         Boolean valorObtenido = this.lista.agregarCliente(new Cliente("Pedro","Gomez",33557051,"pepe 123"));
         Assert.assertEquals(valorEsperado,valorObtenido);
     }
+
+    @Test
+    public void queSeIntenteObtenerUnClienteQueNoExistaEnLaListaDeClientes(){
+        this.lista.agregarCliente(new Cliente("Cristian","Feldman",33557055,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Carmen","López",12345678,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Ana María","López",23456789,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Pedro","Jimenez",345678123,"Pepe 123"));
+        Assert.assertNull(this.lista.obtenerClienteDadoDNI(33557054));
+    }
+
+    @Test
+    public void queSeIntenteObtenerUnClienteQueSiExistaEnLaListaDeClientes(){
+        this.lista.agregarCliente(new Cliente("Cristian","Feldman",33557055,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Carmen","López",12345678,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Ana María","López",23456789,"Pepe 123"));
+        this.lista.agregarCliente(new Cliente("Pedro","Jimenez",345678123,"Pepe 123"));
+        Assert.assertNotNull(this.lista.obtenerClienteDadoDNI(33557055));
+    }
 }
 
